@@ -1,13 +1,13 @@
-# ISP Flashing the Tokyo 60 v3
+# ISP Flashing the Tokyo60 v3
 
 ## What's this all about?
-The Tokyo 60 is a lovely little 60% mechanical keyboard, with the key feature that it is fully programmable via QMK. Unfortunately there has been an issue with the manufacture of the third version of this keyboard which has resulted in users being unable to use the programming capability.
+The Tokyo60 is a lovely little 60% mechanical keyboard, with the key feature that it is fully programmable via QMK. Unfortunately there has been an issue with the manufacture of the third version of this keyboard which has resulted in users being unable to use the programming capability.
 
 The normal process of configuring this keyboard is to put it into 'boot mode', either by pressing the reset button on the pcb, or by using a special key combination (LShift + RShift + Fn + P). Once in boot mode the QMK software is used to 'flash' the desired key mappings onto the board, over the USB connection that we normally use to connect the keyboard to the computer. This process depends on a bit of software that runs on the keyboard called a bootloader. In version 3 as delivered the bootloader is either missing or corrupted in some way. The result is that when users attempt to get the board to enter boot mode, nothing happens. The upshot is that it's not possible to reprogram the board in the usual way. As far as we know this problem affects all boards that were sent out as part of the v3 drop. In addition some of the boards were also delivered with the wrong default keymapping (which of course can't be fixed unless we first fix the bootloader problem).
 
 So we need to fix this bootloader, but of course we can't fix it in the normal way by reflashing the board, because we can't flash the board, at least in the normal way. So how does the bootloader get onto the keyboard in the first place? The answer is ISP, or In System Programming. The controller chip on the PCB (an Atmega32u4) allows certain pins on the chip to be used to load code directly into the chip. All we need is a device called an ISP Programmer and a way to connect this to the right pins on the chip on the keyboard PCB.
 
-MassDrop, who are ultimately responsible for the successful delivery of working keyboards from this drop, have assured everyone that they will ensure that the problem is resolved for everyone. The keyboard designer and the company that manufactured the PCB are working on a fix right now. The problem is that the fix is going to involve manufacturing and sending out some hardware to every customer, and this is inevitably going to take some time.
+MassDrop, who are ultimately responsible for the successful delivery of working keyboards from this drop, have assured us that they will ensure that the problem is resolved for everyone. The keyboard designer and the company that manufactured the PCB are working on a fix right now. The problem is that the fix is going to involve manufacturing and sending out some hardware to every customer, and this is inevitably going to take some time.
 
 This guide is for those of us who are impatient, and brave enough to have a go at fixing this ourselves. It turns out that it's possible to make an ISP Programmer with a low cost device like a Teensy 2.0 or a ProMicro and not too difficult to rig it up to re-flash the bootloader.
 
@@ -42,11 +42,11 @@ You need to download the following file and use Teensy Loader to load it onto th
 (You may already have this file locally if you've previously cloned the QMK repo)
 
 ## Step 2 -- Wiring
-The Tokyo 60 has a PCB that makes it relatively convenient to do ISP programming. First, locate the ISP header:
+The Tokyo60 has a PCB that makes it relatively convenient to do ISP programming. First, locate the ISP header:
 
 ![pcb](img/pcb.png)
 
-Of course, the key thing is knowing which connection on the Tokyo 60 needs to be connected to which connection on the Teensy. A little bit of poking around with a multimeter reveals that the connections on the Tokyo 60 end are as shown here:
+Of course, the key thing is knowing which connection on the Tokyo60 needs to be connected to which connection on the Teensy. A little bit of poking around with a multimeter reveals that the connections on the Tokyo60 end are as shown here:
 
 ![pinout](img/pinout.png)
 
@@ -64,7 +64,7 @@ The connections we need to make need to be like this:
 >
 > Teensy GND <-> Keyboard GND
 
-Notice how every connection simply connects like to like, except that B0 on the Teensy connects to RESET on the Tokyo 60.
+Notice how every connection simply connects like to like, except that B0 on the Teensy connects to RESET on the Tokyo60.
 
 We're going to make this, in order to connect the Teensy to our keyboard:
 
@@ -125,7 +125,7 @@ If you have got here, then congratulations. Your keyboard will not be working ri
 
 ## Step 5 -- Bask in the warm glow of satisfaction
 
-Your Tokyo 60 is now not just a thing of beauty. Thanks to its infinite programmability, it is also a joy forever.
+Your Tokyo60 is now not just a thing of beauty. Thanks to its infinite programmability, it is also a joy forever.
 
 ![my one](img/mytokyo60.jpg)
 
