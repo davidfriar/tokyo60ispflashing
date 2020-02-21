@@ -9,7 +9,7 @@ So we need to fix this bootloader, but of course we can't fix it in the normal w
 
 MassDrop, who are ultimately responsible for the successful delivery of working keyboards from this drop, have assured us that they will ensure that the problem is resolved for everyone. The keyboard designer and the company that manufactured the PCB are working on a fix right now. The problem is that the fix is going to involve manufacturing and sending out some hardware to every customer, and this is inevitably going to take some time.
 
-This guide is for those of us who are impatient, and brave enough to have a go at fixing this ourselves. It turns out that it's possible to make an ISP Programmer with a low cost device like a Teensy 2.0 or a ProMicro and not too difficult to rig it up to re-flash the bootloader.
+This guide is for those of us who are impatient, and brave enough to have a go at fixing this ourselves. It turns out that it's possible to make an ISP Programmer with a low cost device like a Teensy 2.0 or a ProMicro and not too difficult to rig it up to re-flash the bootloader.  Note that for the purposes of this guide, the device used to flash the Tokyo60 must be have a microcontroller from the AVR family (Atmel).  The Teensy 2.0 and Teensy 2.0++ have AVR microcontrollers.  Later versions of the Teensy (e.g. 3.1, 3.2, 4.0) have 32-bit ARM microcontrollers which would need to have a modified Teensy HEX file to enable ISP programming, and is outside the scope of this guide.
 
 The information I've captured here comes in a large part from the QMK documentation, in particular from this page: https://beta.docs.qmk.fm/for-makers-and-modders/isp_flashing_guide
 
@@ -21,7 +21,7 @@ This isn't an official guide of any kind. It's just a record of what worked for 
 ### Hardware
 
 
-1. A Teensy 2.0. I got mine here: https://www.amazon.co.uk/gp/product/B01LZ98KUX/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
+1. A Teensy 2.0. I got mine here: https://www.amazon.co.uk/gp/product/B01LZ98KUX/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1  NOTE: it must be a Teensy 2.0.  Other versions e.g. the Teensy 3.1 will NOT work with the ISP programmer HEX included in this guide.  See above.
 1. Some jumper wires: https://www.amazon.co.uk/gp/product/B01EV70C78/ref=ppx_yo_dt_b_asin_image_o01_s00?ie=UTF8&psc=1
 1. A strip of male pin header : https://www.amazon.co.uk/gp/product/B01M69EA9O/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
 
